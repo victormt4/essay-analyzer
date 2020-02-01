@@ -26,6 +26,38 @@
     flex-flow: column;
 }
 
+@media (min-width: 576px) {
+    .content {
+        flex-flow: row;
+        align-items: unset;
+    }
+    .aside{
+        margin-top: 3em;
+    }
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    margin-top: 2em;
+    width: 90%;
+    flex-flow: column;
+}
+
+@media (min-width: 768px) {
+    .container {
+        width: 70%;
+    }
+}
+
+@media (min-width: 1200px) {
+
+    .container {
+        width: 50%;
+    }
+
+}
+
 .aside {
     flex: 1;
     width: 100%;
@@ -41,33 +73,11 @@
     margin-right: .5em;
 }
 
-.container {
-    display: flex;
-    justify-content: center;
-    margin-top: 2em;
-    width: 90%;
-    flex-flow: column;
-}
-
 .container-subtitle {
     font-size: 1.1rem;
     font-weight: 400;
     margin-bottom: .5em;
 }
 
-@media (min-width: 768px) {
 
-    .content {
-        flex-flow: row;
-    }
-
-}
-
-@media (min-width: 1200px) {
-
-    .container {
-        width: 50%;
-    }
-
-}
 
