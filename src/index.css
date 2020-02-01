@@ -15,6 +15,16 @@ body.dark-mode{
     background: #2b2b2b
 }
 
+.dark-mode .ant-btn{
+    background: inherit;
+    color: inherit;
+    transition: unset;
+}
+
+.dark-mode .ant-btn:hover{
+    color: #1890ff;
+}
+
 *, *::before, *::after {
     box-sizing: border-box;
 }

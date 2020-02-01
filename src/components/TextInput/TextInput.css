@@ -1,3 +1,13 @@
+.text-input-header-container{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: .5em;
+}
+
+.text-input-header{
+    font-size: 1rem;
+}
+
 .input-text-container {
     flex: 1;
     position: relative;
@@ -35,16 +45,18 @@
     background: inherit;
     border: 2px solid transparent;
     color: transparent;
+    z-index: 500;
 }
 
-.mark{
+.mark {
     padding: 0;
-    color: transparent;
+    color: rgba(0, 0, 0, 0.50);
     background: #91d5ff;
     cursor: pointer;
     z-index: 1000;
 }
 
-.dark-mode .mark{
+.dark-mode .mark {
     background: #1890ff;
+    color: white;
 }

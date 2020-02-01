@@ -9,9 +9,9 @@ function App() {
     const [text, setText] = React.useState('');
     const [words, setWords] = React.useState([]);
 
-    function processText(e) {
+    function processText(value, e) {
 
-        const text = e.target.value;
+        const text = typeof value === 'string' ? value : e.target.value;
         setText(text);
 
         let textArray = text.split(' ');
@@ -31,7 +31,6 @@ function App() {
 
         setWords(wordsCount.filter(word => word.count > 2));
     }
-
 
     function toggleNightMode(enable) {
 
@@ -59,6 +58,7 @@ function App() {
                         text={text}
                         words={words}
                         processText={processText}
+                        value={text}
                     />
                 </div>
                 <aside className="aside">
