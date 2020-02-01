@@ -1,6 +1,6 @@
 .text-input-header-container{
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     margin-bottom: .5em;
 }
 
@@ -20,6 +20,7 @@
     color: inherit;
     transition: unset;
     min-height: 30em;
+    z-index: 100;
 }
 
 .input-text-container textarea:hover,
@@ -59,4 +60,23 @@
 .dark-mode .mark {
     background: #1890ff;
     color: white;
+}
+
+.image-container{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    padding: 5em;
+    z-index: 0;
+}
+
+.image-container img {
+    height: 20em;
+    margin-bottom: 2em;
+    opacity: .7;
 }

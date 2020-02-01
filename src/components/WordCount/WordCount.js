@@ -3,18 +3,14 @@ import './WordCount.css';
 
 export default function WordCount(props) {
 
-    if (props.words.length) {
-
-        return (<div className="word-count">
-            {props.words.sort(((a, b) => {
-                if (a.count < b.count) return 1;
-                else if (a.count > b.count) return -1;
-                else return 0;
-            })).map(word => (<div key={word.value} className="word-count-group">
-                <span className="word-count-title">{word.value}</span>
-                <span className="word-count-subtitle">{word.count} repetições</span>
-            </div>))}
-        </div>);
-
-    } else return null;
+    return (<div className="word-count">
+        {props.words.sort(((a, b) => {
+            if (a.count < b.count) return 1;
+            else if (a.count > b.count) return -1;
+            else return 0;
+        })).map(word => (<div key={word.value} className="word-count-group">
+            <span className="word-count-title">{word.value}</span>
+            <span className="word-count-subtitle">{word.count} repetições</span>
+        </div>))}
+    </div>);
 }

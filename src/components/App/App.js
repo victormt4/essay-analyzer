@@ -3,11 +3,13 @@ import {Icon, Switch} from "antd";
 import './App.css';
 import WordCount from "../WordCount/WordCount";
 import TextInput from "../TextInput/TextInput";
+import SynonymsSelector from "../SynonymsSelector/SynonymsSelector";
 
 function App() {
 
     const [text, setText] = React.useState('');
     const [words, setWords] = React.useState([]);
+    const [word, setWord] = React.useState(null);
     const [enableHighlights, setEnableHighlights] = React.useState(false);
 
     function processText(value, e) {
@@ -41,6 +43,7 @@ function App() {
 
             setEnableHighlights(false);
             setWords([]);
+            setWord(null);
         }
     }
 
@@ -55,7 +58,7 @@ function App() {
     return (
         <>
             <header className="header">
-                <h1><Icon type="form"/> Essay Analyzer</h1>
+                <h1>eSSay</h1>
                 <div className="toggle-dark-mode-container">
                     <Switch
                         checkedChildren={<Icon type="bulb" theme="filled"/>}
@@ -64,18 +67,20 @@ function App() {
                     /></div>
             </header>
             <main className="content">
-                <aside className="aside"/>
+                <aside className="aside">
+                    {word !== null && <SynonymsSelector word={word}/>}
+                </aside>
                 <div className="container">
                     <TextInput
-                        text={text}
+                        value={text}
                         words={words}
                         processText={processText}
-                        value={text}
                         enableHighlights={enableHighlights}
+                        setWord={setWord}
                     />
                 </div>
                 <aside className="aside">
-                    <WordCount words={words}/>
+                    {words.length > 0 && <WordCount words={words}/>}
                 </aside>
             </main>
             <footer className="footer">
