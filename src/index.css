@@ -15,6 +15,10 @@ body.dark-mode{
     background: #2b2b2b
 }
 
+.ant-btn{
+    color: inherit;
+}
+
 .dark-mode .ant-btn{
     background: inherit;
     color: inherit;

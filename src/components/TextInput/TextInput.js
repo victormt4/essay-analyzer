@@ -4,6 +4,8 @@ import './TextInput.css';
 
 export default function TextInput(props) {
 
+
+
     const inputRef = React.useRef(null);
 
     function getHighlightedText() {
@@ -36,13 +38,14 @@ export default function TextInput(props) {
             <Button size="small" onClick={() => props.processText('')}>Limpar</Button>
         </div>
         <div className="input-text-container">
-            <div onClick={event => {
+            {props.enableHighlights && <div onClick={event => {
 
                 if (event.target.tagName.toUpperCase() === 'MARK') showSynonyms(event.target.getAttribute('data-word-value'));
                 else inputRef.current.focus()
 
-            }} id="input-text-highlight-container" dangerouslySetInnerHTML={getHighlightedText()}/>
-            <Input.TextArea ref={inputRef} value={props.text} className="input-text" onChange={event => props.processText(event.target.value, event)} autoSize={true}/>
+            }} id="input-text-highlight-container" dangerouslySetInnerHTML={getHighlightedText()}/>}
+            <Input.TextArea ref={inputRef} value={props.text} className="input-text"
+                            onChange={event => props.processText(event.target.value, event)} autoSize={true}/>
         </div>
     </>)
 }

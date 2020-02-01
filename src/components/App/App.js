@@ -8,28 +8,40 @@ function App() {
 
     const [text, setText] = React.useState('');
     const [words, setWords] = React.useState([]);
+    const [enableHighlights, setEnableHighlights] = React.useState(false);
 
     function processText(value, e) {
 
-        const text = typeof value === 'string' ? value : e.target.value;
-        setText(text);
+        const inputText = typeof value === 'string' ? value : e.target.value;
 
-        let textArray = text.split(' ');
+        setText(inputText);
 
-        let wordsCount = [];
+        if (inputText.length >= 120) {
 
-        textArray.forEach(word => {
+            setEnableHighlights(true);
 
-            if (word.length >= 3) {
+            let textArray = inputText.split(' ');
 
-                let wordCount = wordsCount.find(wordObject => wordObject.value === word.toLowerCase());
+            let wordsCount = [];
 
-                if (wordCount) wordCount.count = wordCount.count + 1;
-                else wordsCount.push({value: word.toLowerCase(), count: 1});
-            }
-        });
+            textArray.forEach(word => {
 
-        setWords(wordsCount.filter(word => word.count > 2));
+                if (word.length >= 3) {
+
+                    let wordCount = wordsCount.find(wordObject => wordObject.value === word.toLowerCase());
+
+                    if (wordCount) wordCount.count = wordCount.count + 1;
+                    else wordsCount.push({value: word.toLowerCase(), count: 1});
+                }
+            });
+
+            setWords(wordsCount.filter(word => word.count > 2));
+
+        } else {
+
+            setEnableHighlights(false);
+            setWords([]);
+        }
     }
 
     function toggleNightMode(enable) {
@@ -59,6 +71,7 @@ function App() {
                         words={words}
                         processText={processText}
                         value={text}
+                        enableHighlights={enableHighlights}
                     />
                 </div>
                 <aside className="aside">
