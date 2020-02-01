@@ -49,15 +49,3 @@ body.dark-mode{
 .blue-background {
     background-color: #1890ff;
 }
-
-.mark{
-    padding: 0;
-    color: transparent;
-    background: #91d5ff;
-    cursor: pointer;
-    z-index: 1000;
-}
-
-.dark-mode .mark{
-    background: #1890ff;
-}
