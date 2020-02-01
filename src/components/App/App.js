@@ -1,11 +1,12 @@
 import React from 'react';
-import {Input, Icon} from "antd";
+import {Input, Icon, Switch} from "antd";
 import './App.css';
 import WordCount from "../WordCount/WordCount";
 
 function App() {
 
     const [words, setWords] = React.useState([]);
+    const [nightMode, setNightMode] = React.useState(false);
 
     function processText(e) {
 
@@ -29,13 +30,29 @@ function App() {
         setWords(wordsCount.filter(word => word.count > 2));
     }
 
+    function toggleNightMode(enable) {
+
+        let body = document.querySelector('body');
+
+        if (enable) body.classList.add('dark-mode');
+        else body.classList.remove('dark-mode')
+    }
+
     return (
         <>
-            <header className="header"><Icon type="form"/> Essay Analyzer</header>
+            <header className="header">
+                <h1><Icon type="form"/> Essay Analyzer</h1>
+                <div className="toggle-dark-mode-container">
+                    <Switch
+                        checkedChildren={<Icon type="bulb" theme="filled"/>}
+                        unCheckedChildren={<Icon type="bulb"/>}
+                        onChange={toggleNightMode}
+                    /></div>
+            </header>
             <main className="content">
                 <div className="container">
                     <div className="input-text-container">
-                        <Input.TextArea className="input-text" onChange={processText} autoSize={true} />
+                        <Input.TextArea className="input-text" onChange={processText} autoSize={true}/>
                     </div>
                     <aside className="aside">
                         <WordCount words={words}/>
