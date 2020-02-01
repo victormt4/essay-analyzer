@@ -1,0 +1,21 @@
+.word-count {
+
+    padding: 1em;
+
+}
+
+.word-count-group {
+    display: flex;
+    flex-flow: column;
+    margin-bottom: .5em;
+    line-height: 1.5;
+}
+
+.word-count-title{
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.word-count-subtitle{
+    font-size: .8rem;
+}
