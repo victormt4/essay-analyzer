@@ -22,9 +22,6 @@ export default function TextInput(props) {
     }
 
     return (<>
-        <div className="text-input-header-container">
-            <Button size="small" onClick={() => props.processText('')}>Limpar</Button>
-        </div>
         <div className="input-text-container">
             {props.enableHighlights && <div onClick={event => {
 
@@ -36,7 +33,7 @@ export default function TextInput(props) {
                             onChange={event => props.processText(event.target.value, event)} autoSize={true}/>
             {props.value.length === 0 && <div className="image-container">
                 <img src={image} alt="Vazio"/>
-                <span>Nenhum texto, que tal escrever algo? Mínimo de 120 caracteres</span>
+                <span>Não encontrei nenhum texto, que tal escrever algo? Mínimo de 120 caracteres</span>
             </div>}
         </div>
     </>)
