@@ -19,7 +19,7 @@ export default function WordCountPopover (props) {
 
     return (
         <div className="word-count-popover">
-            <Popover content={content} trigger="click">
+            <Popover content={content} trigger="click" placement="bottomRight">
                 <Button shape="round" type="primary" >{props.words ? props.words.length : 0} palavras repetidas</Button>
             </Popover>
         </div>
