@@ -1,12 +1,18 @@
-.synonyms-selector{
+.synonyms-selector {
     flex: 1;
     padding: 1em;
 }
 
-.synonyms-selector-title{
+.synonyms-selector-title {
     display: block;
     font-size: 1.5rem;
     font-weight: 500;
     text-align: right;
     width: 100%;
+}
+
+.synonyms-container {
+    display: flex;
+    flex-flow: column;
+    align-items: flex-end;
 }
