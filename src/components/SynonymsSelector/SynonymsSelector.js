@@ -44,7 +44,7 @@ export default function SynonymsSelector(props) {
         <span className="synonyms-selector-title">{props.word}</span>
         <div className="synonyms-container">
             {state.requestStatus === 200
-                ? state.synonyms.slice(0, 4).map(synonym => <span key={synonym}>{synonym}</span>)
+                ? state.synonyms.slice(0, 10).map(synonym => <span key={synonym}>{synonym}</span>)
                 : <span>carregando...</span>
             }
         </div>
