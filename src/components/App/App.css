@@ -22,7 +22,6 @@
 .content {
     flex: 1;
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-flow: column;
 }
@@ -31,6 +30,7 @@
     .content {
         flex-flow: row;
         align-items: unset;
+        justify-content: center;
     }
     .aside{
         margin-top: 3em;
@@ -40,14 +40,15 @@
 .container {
     display: flex;
     justify-content: center;
-    margin-top: 2em;
     width: 90%;
     flex-flow: column;
+    margin-top: 2em;
 }
 
 @media (min-width: 768px) {
     .container {
         width: 70%;
+        margin-top: 2em;
     }
 }
 

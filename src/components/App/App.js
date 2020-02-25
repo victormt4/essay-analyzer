@@ -4,6 +4,8 @@ import './App.css';
 import WordCount from "../WordCount/WordCount";
 import TextInput from "../TextInput/TextInput";
 import SynonymsSelector from "../SynonymsSelector/SynonymsSelector";
+import MediaQueries from "../../libs/MediaQueries";
+import WordCountPopover from "../WordCountPopover/WordCountPopover";
 
 function App() {
 
@@ -11,6 +13,7 @@ function App() {
     const [words, setWords] = React.useState([]);
     const [word, setWord] = React.useState(null);
     const [enableHighlights, setEnableHighlights] = React.useState(false);
+    const [desktopMode, setDesktopMode] = React.useState(MediaQueries.MD());
 
     function processText(value, e) {
 
@@ -55,6 +58,21 @@ function App() {
         else body.classList.remove('dark-mode')
     }
 
+    //Criando evento para detecar resize da janela
+    React.useEffect(() => {
+
+        let resizeHandler = function (event) {
+
+            setDesktopMode(MediaQueries.MD());
+        };
+
+        window.addEventListener('resize', resizeHandler);
+
+        //Cleanup
+        return () => window.removeEventListener('resize', resizeHandler);
+
+    }, []);
+
     return (
         <>
             <header className="header">
@@ -67,10 +85,11 @@ function App() {
                     /></div>
             </header>
             <main className="content">
-                <aside className="aside">
+                {desktopMode && <aside className="aside">
                     {word !== null && <SynonymsSelector word={word}/>}
-                </aside>
+                </aside>}
                 <div className="container">
+                    {!desktopMode && <WordCountPopover words={words} />}
                     <TextInput
                         value={text}
                         words={words}
@@ -79,9 +98,9 @@ function App() {
                         setWord={setWord}
                     />
                 </div>
-                <aside className="aside">
+                {desktopMode && <aside className="aside">
                     {words.length > 0 && <WordCount words={words}/>}
-                </aside>
+                </aside>}
             </main>
             <footer className="footer">
                 <a href="https://github.com/victormt4/essay-analyzer" target="_blank" rel="noopener noreferrer"><Icon
