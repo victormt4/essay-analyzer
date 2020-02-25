@@ -1,10 +1,10 @@
-.text-input-header-container{
+.text-input-header-container {
     display: flex;
     justify-content: flex-end;
     margin-bottom: .5em;
 }
 
-.text-input-header{
+.text-input-header {
     font-size: 1rem;
 }
 
@@ -62,7 +62,7 @@
     color: white;
 }
 
-.image-container{
+.image-container {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -79,4 +79,9 @@
     height: 20em;
     margin-bottom: 2em;
     opacity: .7;
+}
+
+.image-container span {
+    font-size: 1.1rem;
+    font-weight: 400;
 }

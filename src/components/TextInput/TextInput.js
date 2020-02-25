@@ -1,5 +1,5 @@
 import React from "react";
-import {Input, Button} from "antd";
+import {Input} from "antd";
 import './TextInput.css';
 import image from '../../empty_image.svg'
 
@@ -13,7 +13,7 @@ export default function TextInput(props) {
 
         props.words.forEach(word => {
 
-            let regex = new RegExp(`${word.value}(?=[\\s.;])`, 'gi');
+            let regex = new RegExp(`(?<=(^|\\s))${word.value}(?=[\\s.;\\b])`, 'gi');
 
             highlightedText = highlightedText.replace(regex, `<mark class="mark" data-word-value="${word.value}">${word.value}</mark>`)
         });
@@ -33,7 +33,7 @@ export default function TextInput(props) {
                             onChange={event => props.processText(event.target.value, event)} autoSize={true}/>
             {props.value.length === 0 && <div className="image-container">
                 <img src={image} alt="Vazio"/>
-                <span>Não encontrei nenhum texto, que tal escrever algo? Mínimo de 120 caracteres</span>
+                <span>Que tal escrever algo? Mínimo de 120 caracteres</span>
             </div>}
         </div>
     </>)
