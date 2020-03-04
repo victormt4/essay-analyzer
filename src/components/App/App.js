@@ -6,6 +6,7 @@ import TextInput from "../TextInput/TextInput";
 import SynonymsSelector from "../SynonymsSelector/SynonymsSelector";
 import MediaQueries from "../../libs/MediaQueries";
 import WordCountPopover from "../WordCountPopover/WordCountPopover";
+import CodeMirrorWrapper from "../CodeMirrorWrapper/CodeMirrorWrapper";
 
 function App() {
 
@@ -90,12 +91,15 @@ function App() {
                 </aside>}
                 <div className="container">
                     {!desktopMode && <WordCountPopover words={words} />}
-                    <TextInput
-                        value={text}
-                        words={words}
-                        processText={processText}
-                        enableHighlights={enableHighlights}
-                        setWord={setWord}
+                    {/*<TextInput*/}
+                    {/*    value={text}*/}
+                    {/*    words={words}*/}
+                    {/*    processText={processText}*/}
+                    {/*    enableHighlights={enableHighlights}*/}
+                    {/*    setWord={setWord}*/}
+                    {/*/>*/}
+                    <CodeMirrorWrapper
+                        setWords={setWords}
                     />
                 </div>
                 {desktopMode && <aside className="aside">
