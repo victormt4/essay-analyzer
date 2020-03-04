@@ -1,6 +1,6 @@
 import React from 'react';
-import { Icon as LegacyIcon } from '@ant-design/compatible';
-import { Switch } from "antd";
+import {Switch} from "antd";
+import {BulbOutlined, BulbFilled, GithubOutlined, MailFilled, LinkedinFilled} from "@ant-design/icons";
 import './App.css';
 import WordCount from "../WordCount/WordCount";
 import TextInput from "../TextInput/TextInput";
@@ -80,8 +80,8 @@ function App() {
             <h1>eSSay</h1>
             <div className="toggle-dark-mode-container">
                 <Switch
-                    checkedChildren={<LegacyIcon type="bulb" theme="filled"/>}
-                    unCheckedChildren={<LegacyIcon type="bulb"/>}
+                    checkedChildren={<BulbFilled/>}
+                    unCheckedChildren={<BulbOutlined/>}
                     onChange={toggleNightMode}
                 /></div>
         </header>
@@ -90,7 +90,7 @@ function App() {
                 {word !== null && <SynonymsSelector word={word}/>}
             </aside>}
             <div className="container">
-                {!desktopMode && <WordCountPopover words={words} />}
+                {!desktopMode && <WordCountPopover words={words}/>}
                 {/*<TextInput*/}
                 {/*    value={text}*/}
                 {/*    words={words}*/}
@@ -107,11 +107,11 @@ function App() {
             </aside>}
         </main>
         <footer className="footer">
-            <a href="https://github.com/victormt4/essay-analyzer" target="_blank" rel="noopener noreferrer"><LegacyIcon
-                type="github"/></a>
-            <a href="mailto:victor.mt4@gmail.com"><LegacyIcon type="mail" theme="filled"/></a>
+            <a href="https://github.com/victormt4/essay-analyzer" target="_blank"
+               rel="noopener noreferrer"><GithubOutlined/></a>
+            <a href="mailto:victor.mt4@gmail.com"><MailFilled/></a>
             <a href="https://www.linkedin.com/in/victor-mota-a01b8714a/" target="_blank"
-               rel="noopener noreferrer"><LegacyIcon type="linkedin" theme="filled"/></a>
+               rel="noopener noreferrer"><LinkedinFilled/></a>
         </footer>
     </>;
 }
