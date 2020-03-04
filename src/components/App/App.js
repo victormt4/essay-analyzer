@@ -1,5 +1,6 @@
 import React from 'react';
-import {Icon, Switch} from "antd";
+import { Icon as LegacyIcon } from '@ant-design/compatible';
+import { Switch } from "antd";
 import './App.css';
 import WordCount from "../WordCount/WordCount";
 import TextInput from "../TextInput/TextInput";
@@ -74,47 +75,45 @@ function App() {
 
     }, []);
 
-    return (
-        <>
-            <header className="header">
-                <h1>eSSay</h1>
-                <div className="toggle-dark-mode-container">
-                    <Switch
-                        checkedChildren={<Icon type="bulb" theme="filled"/>}
-                        unCheckedChildren={<Icon type="bulb"/>}
-                        onChange={toggleNightMode}
-                    /></div>
-            </header>
-            <main className="content">
-                {desktopMode && <aside className="aside">
-                    {word !== null && <SynonymsSelector word={word}/>}
-                </aside>}
-                <div className="container">
-                    {!desktopMode && <WordCountPopover words={words} />}
-                    {/*<TextInput*/}
-                    {/*    value={text}*/}
-                    {/*    words={words}*/}
-                    {/*    processText={processText}*/}
-                    {/*    enableHighlights={enableHighlights}*/}
-                    {/*    setWord={setWord}*/}
-                    {/*/>*/}
-                    <CodeMirrorWrapper
-                        setWords={setWords}
-                    />
-                </div>
-                {desktopMode && <aside className="aside">
-                    {words.length > 0 && <WordCount words={words}/>}
-                </aside>}
-            </main>
-            <footer className="footer">
-                <a href="https://github.com/victormt4/essay-analyzer" target="_blank" rel="noopener noreferrer"><Icon
-                    type="github"/></a>
-                <a href="mailto:victor.mt4@gmail.com"><Icon type="mail" theme="filled"/></a>
-                <a href="https://www.linkedin.com/in/victor-mota-a01b8714a/" target="_blank"
-                   rel="noopener noreferrer"><Icon type="linkedin" theme="filled"/></a>
-            </footer>
-        </>
-    );
+    return <>
+        <header className="header">
+            <h1>eSSay</h1>
+            <div className="toggle-dark-mode-container">
+                <Switch
+                    checkedChildren={<LegacyIcon type="bulb" theme="filled"/>}
+                    unCheckedChildren={<LegacyIcon type="bulb"/>}
+                    onChange={toggleNightMode}
+                /></div>
+        </header>
+        <main className="content">
+            {desktopMode && <aside className="aside">
+                {word !== null && <SynonymsSelector word={word}/>}
+            </aside>}
+            <div className="container">
+                {!desktopMode && <WordCountPopover words={words} />}
+                {/*<TextInput*/}
+                {/*    value={text}*/}
+                {/*    words={words}*/}
+                {/*    processText={processText}*/}
+                {/*    enableHighlights={enableHighlights}*/}
+                {/*    setWord={setWord}*/}
+                {/*/>*/}
+                <CodeMirrorWrapper
+                    setWords={setWords}
+                />
+            </div>
+            {desktopMode && <aside className="aside">
+                {words.length > 0 && <WordCount words={words}/>}
+            </aside>}
+        </main>
+        <footer className="footer">
+            <a href="https://github.com/victormt4/essay-analyzer" target="_blank" rel="noopener noreferrer"><LegacyIcon
+                type="github"/></a>
+            <a href="mailto:victor.mt4@gmail.com"><LegacyIcon type="mail" theme="filled"/></a>
+            <a href="https://www.linkedin.com/in/victor-mota-a01b8714a/" target="_blank"
+               rel="noopener noreferrer"><LegacyIcon type="linkedin" theme="filled"/></a>
+        </footer>
+    </>;
 }
 
 export default App;
