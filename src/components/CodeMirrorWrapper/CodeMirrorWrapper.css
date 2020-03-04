@@ -1,9 +1,6 @@
 .code-mirror-wrapper {
     flex: 1;
-
     border-radius: 3px;
-    background-size: contain;
-    background-repeat: no-repeat;
 }
 
 .code-mirror-wrapper:focus {
@@ -16,8 +13,17 @@
 
 .CodeMirror {
     border: 3px solid rgba(0, 0, 0, 0.1);
+    font-family: inherit;
+    font-size: 1rem;
+    color: rgba(0,0,0,.65);
 }
 
-.CodeMirror:focus{
+.CodeMirror:focus {
     border-color: #2f54eb;
+}
+
+.dark-mode .CodeMirror {
+    background: inherit;
+    color: white;
+    border: 3px solid rgba(255, 255, 255, 0.3);
 }

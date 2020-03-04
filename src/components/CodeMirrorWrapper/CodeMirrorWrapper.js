@@ -48,7 +48,7 @@ class CodeMirrorWrapper extends React.Component {
 
     render() {
         return (
-            <div className="code-mirror-wrapper" style={{backgroundImage: `url(${image})`}}>
+            <div className="code-mirror-wrapper">
                 <div id="code-mirror-node"/>
             </div>
         )
