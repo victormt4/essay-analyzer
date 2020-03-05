@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/essay-analyzer/static/css/main.5126f357.chunk.css",
-    "main.js": "/essay-analyzer/static/js/main.d4daa7cb.chunk.js",
-    "main.js.map": "/essay-analyzer/static/js/main.d4daa7cb.chunk.js.map",
+    "main.css": "/essay-analyzer/static/css/main.c7dffd7b.chunk.css",
+    "main.js": "/essay-analyzer/static/js/main.f3f6397e.chunk.js",
+    "main.js.map": "/essay-analyzer/static/js/main.f3f6397e.chunk.js.map",
     "runtime-main.js": "/essay-analyzer/static/js/runtime-main.ecb7369d.js",
     "runtime-main.js.map": "/essay-analyzer/static/js/runtime-main.ecb7369d.js.map",
-    "static/css/2.ff8bd605.chunk.css": "/essay-analyzer/static/css/2.ff8bd605.chunk.css",
-    "static/js/2.8f3f0dd2.chunk.js": "/essay-analyzer/static/js/2.8f3f0dd2.chunk.js",
-    "static/js/2.8f3f0dd2.chunk.js.map": "/essay-analyzer/static/js/2.8f3f0dd2.chunk.js.map",
+    "static/css/2.8d073af7.chunk.css": "/essay-analyzer/static/css/2.8d073af7.chunk.css",
+    "static/js/2.44804461.chunk.js": "/essay-analyzer/static/js/2.44804461.chunk.js",
+    "static/js/2.44804461.chunk.js.map": "/essay-analyzer/static/js/2.44804461.chunk.js.map",
     "index.html": "/essay-analyzer/index.html",
-    "precache-manifest.b4cbdd8ae06eacd541a58dc62843be03.js": "/essay-analyzer/precache-manifest.b4cbdd8ae06eacd541a58dc62843be03.js",
+    "precache-manifest.f2b2d44b9e40d662d053a2487280c958.js": "/essay-analyzer/precache-manifest.f2b2d44b9e40d662d053a2487280c958.js",
     "service-worker.js": "/essay-analyzer/service-worker.js",
-    "static/css/2.ff8bd605.chunk.css.map": "/essay-analyzer/static/css/2.ff8bd605.chunk.css.map",
-    "static/css/main.5126f357.chunk.css.map": "/essay-analyzer/static/css/main.5126f357.chunk.css.map",
-    "static/js/2.8f3f0dd2.chunk.js.LICENSE.txt": "/essay-analyzer/static/js/2.8f3f0dd2.chunk.js.LICENSE.txt",
+    "static/css/2.8d073af7.chunk.css.map": "/essay-analyzer/static/css/2.8d073af7.chunk.css.map",
+    "static/css/main.c7dffd7b.chunk.css.map": "/essay-analyzer/static/css/main.c7dffd7b.chunk.css.map",
+    "static/js/2.44804461.chunk.js.LICENSE.txt": "/essay-analyzer/static/js/2.44804461.chunk.js.LICENSE.txt",
     "static/media/empty_image.svg": "/essay-analyzer/static/media/empty_image.6606dc27.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.ecb7369d.js",
-    "static/css/2.ff8bd605.chunk.css",
-    "static/js/2.8f3f0dd2.chunk.js",
-    "static/css/main.5126f357.chunk.css",
-    "static/js/main.d4daa7cb.chunk.js"
+    "static/css/2.8d073af7.chunk.css",
+    "static/js/2.44804461.chunk.js",
+    "static/css/main.c7dffd7b.chunk.css",
+    "static/js/main.f3f6397e.chunk.js"
   ]
 }
