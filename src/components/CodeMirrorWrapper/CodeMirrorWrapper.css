@@ -12,18 +12,33 @@
 }
 
 .CodeMirror {
-    border: 3px solid rgba(0, 0, 0, 0.1);
+    border: 3px solid #f0f0f0;
     font-family: inherit;
     font-size: 1rem;
-    color: rgba(0,0,0,.65);
+    color: rgba(0, 0, 0, .65);
+    transition: border-color 150ms;
 }
 
-.CodeMirror:focus {
-    border-color: #2f54eb;
+.CodeMirror-focused, .CodeMirror:hover {
+    border-color: #bfbfbf;
 }
 
 .dark-mode .CodeMirror {
     background: inherit;
     color: white;
-    border: 3px solid rgba(255, 255, 255, 0.3);
+}
+
+.text-marker{
+
+}
+
+.text-marker {
+    color: rgba(0, 0, 0, 0.50);
+    background: #91d5ff;
+    cursor: pointer;
+}
+
+.dark-mode .text-marker {
+    background: #1890ff;
+    color: white;
 }

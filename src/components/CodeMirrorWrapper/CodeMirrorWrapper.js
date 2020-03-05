@@ -1,5 +1,6 @@
 import React from 'react';
 import CodeMirror from "codemirror/src/codemirror"
+import searchcursor from "./addons/searchcursor";
 import 'codemirror/lib/codemirror.css';
 import "./CodeMirrorWrapper.css";
 import image from '../../empty_image.svg';
@@ -9,6 +10,8 @@ class CodeMirrorWrapper extends React.Component {
     constructor(props) {
 
         super(props);
+
+        searchcursor(CodeMirror);
 
         this.processText = this.processText.bind(this)
     }
@@ -42,9 +45,43 @@ class CodeMirrorWrapper extends React.Component {
 
         wordsCount = wordsCount.filter(obj => obj.count > 2);
 
+        this.highlightText(wordsCount);
         this.props.setWords(wordsCount);
     }
 
+    highlightText(wordsCount) {
+
+        this.clearMarks();
+
+        wordsCount.forEach(word => {
+
+            let regex = new RegExp(`(?<=(^|\\s))${word.value}(?=[\\s.;\\b])`, 'gi');
+
+            let cursor = this.editor.getSearchCursor(regex);
+
+            let currentWord = null;
+
+            while (currentWord = cursor.findNext()) {
+
+                let position = {
+                    from: cursor.from(),
+                    to: cursor.to()
+                };
+
+                this.editor.markText(position.from, position.to, {
+                        className: 'text-marker'
+                    }
+                )
+            }
+        })
+    }
+
+    clearMarks() {
+
+        let marks = this.editor.getAllMarks();
+
+        marks.forEach(mark => mark.clear())
+    }
 
     render() {
         return (
