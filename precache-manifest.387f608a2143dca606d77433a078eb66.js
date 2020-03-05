@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "de8a3903ecfaa40c99a5b1d8d6fb2c0b",
+    "revision": "a0ad2c48297a32797221a4325bb9c74d",
     "url": "/essay-analyzer/index.html"
   },
   {
-    "revision": "111c1b7174ed140552f0",
+    "revision": "6e79390d230e915534a5",
     "url": "/essay-analyzer/static/css/2.8d073af7.chunk.css"
   },
   {
-    "revision": "0fd7da6b0b9a98f9cf34",
-    "url": "/essay-analyzer/static/css/main.726c00c1.chunk.css"
+    "revision": "0390b4dbdc01d0c3cbc5",
+    "url": "/essay-analyzer/static/css/main.1721f007.chunk.css"
   },
   {
-    "revision": "111c1b7174ed140552f0",
-    "url": "/essay-analyzer/static/js/2.a4e50e5e.chunk.js"
+    "revision": "6e79390d230e915534a5",
+    "url": "/essay-analyzer/static/js/2.f1fb9887.chunk.js"
   },
   {
     "revision": "9a0e6ad7df4effc3aa6ea7f039958117",
-    "url": "/essay-analyzer/static/js/2.a4e50e5e.chunk.js.LICENSE.txt"
+    "url": "/essay-analyzer/static/js/2.f1fb9887.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "0fd7da6b0b9a98f9cf34",
-    "url": "/essay-analyzer/static/js/main.895a91be.chunk.js"
+    "revision": "0390b4dbdc01d0c3cbc5",
+    "url": "/essay-analyzer/static/js/main.133ad43c.chunk.js"
   },
   {
     "revision": "f4ecdbc7832ced7bbc8a",
