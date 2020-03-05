@@ -13,7 +13,8 @@ class CodeMirrorWrapper extends React.Component {
 
         searchcursor(CodeMirror);
 
-        this.processText = this.processText.bind(this)
+        this.processText = this.processText.bind(this);
+        this.clickOnWord = this.clickOnWord.bind(this);
     }
 
     componentDidMount() {
@@ -22,7 +23,8 @@ class CodeMirrorWrapper extends React.Component {
             lineWrapping: true
         });
 
-        this.editor.on('change', this.processText)
+        this.editor.on('change', this.processText);
+        this.editor.on('mousedown', this.clickOnWord)
 
     }
 
@@ -68,10 +70,11 @@ class CodeMirrorWrapper extends React.Component {
                     to: cursor.to()
                 };
 
-                this.editor.markText(position.from, position.to, {
-                        className: 'text-marker'
-                    }
-                )
+                let mark = this.editor.markText(position.from, position.to, {
+                    className: 'text-marker'
+                });
+
+                mark.word = word;
             }
         })
     }
@@ -81,6 +84,24 @@ class CodeMirrorWrapper extends React.Component {
         let marks = this.editor.getAllMarks();
 
         marks.forEach(mark => mark.clear())
+    }
+
+    clickOnWord(instance, event) {
+
+        // let lineCh = this.editor.coordsChar({left: event.clientX, top: event.clientY});
+        // let markers = this.editor.findMarksAt(lineCh);
+        //
+        // if (markers.length) {
+        //
+        //     let marker = markers[0];
+        //
+        //     let div = document.createElement('div');
+        //     div.id = 'container-popup-word';
+        //     div.innerText = marker.word.value;
+        //     div.style.position = 'absolute';
+        //
+        //     this.editor.addWidget(lineCh, div);
+        // }
     }
 
     render() {
