@@ -11,6 +11,8 @@ class CodeMirrorWrapper extends React.Component {
 
         super(props);
 
+        this.state = {enableBackground: true};
+
         searchcursor(CodeMirror);
 
         this.processText = this.processText.bind(this);
@@ -20,7 +22,8 @@ class CodeMirrorWrapper extends React.Component {
     componentDidMount() {
 
         this.editor = CodeMirror(document.getElementById('code-mirror-node'), {
-            lineWrapping: true
+            lineWrapping: true,
+            // lineNumbers: true
         });
 
         this.editor.on('change', this.processText);
@@ -31,6 +34,11 @@ class CodeMirrorWrapper extends React.Component {
     processText(instance, changeObj) {
 
         let text = this.editor.getValue();
+
+        console.log(text.length);
+
+        if (text.length) this.setState({enableBackground: false});
+        else this.setState({enableBackground: true});
 
         let wordsCount = [];
 
@@ -106,8 +114,12 @@ class CodeMirrorWrapper extends React.Component {
 
     render() {
         return (
-            <div className="code-mirror-wrapper">
+            <div className="code-mirror-wrapper" style={{position: 'relative'}}>
                 <div id="code-mirror-node"/>
+                {this.state.enableBackground && <div className="image-container">
+                    <img src={image} alt="Vazio"/>
+                    <span>Que tal escrever algo? Mínimo de 120 caracteres</span>
+                </div>}
             </div>
         )
     }

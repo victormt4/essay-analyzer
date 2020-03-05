@@ -17,7 +17,9 @@
     font-size: 1rem;
     color: rgba(0, 0, 0, .65);
     transition: border-color 150ms;
+    height: calc(100vh - 12em);
 }
+
 
 .CodeMirror-focused, .CodeMirror:hover {
     border-color: #bfbfbf;
@@ -37,4 +39,28 @@
 .dark-mode .text-marker {
     background: #1890ff;
     color: white;
+}
+
+.image-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    padding: 5em;
+    z-index: 0;
+}
+
+.image-container img {
+    height: 20em;
+    margin-bottom: 2em;
+    opacity: .7;
+}
+
+.image-container span {
+    font-size: 1.1rem;
+    font-weight: 400;
 }
