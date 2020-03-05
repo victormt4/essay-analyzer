@@ -25,6 +25,7 @@ class CodeMirrorWrapper extends React.Component {
             lineWrapping: true
             // lineNumbers: true
         });
+        this.editor.focus();
 
         this.editor.on('change', this.processText);
         this.editor.on('mousedown', this.clickOnWord)
