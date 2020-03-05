@@ -16,7 +16,7 @@ class CodeMirrorWrapper extends React.Component {
 
         searchcursor(CodeMirror);
 
-        this.popups = [];
+        this.popupOpen = false;
 
         this.processText = this.processText.bind(this);
         this.clickOnWord = this.clickOnWord.bind(this);
@@ -97,22 +97,26 @@ class CodeMirrorWrapper extends React.Component {
 
     clickOnWord(event) {
 
-        console.log('click');
-
         let lineCh = this.editor.coordsChar({left: event.clientX, top: event.clientY});
         let markers = this.editor.findMarksAt(lineCh);
 
-        if (markers.length) {
+        if (markers.length && !this.popupOpen) {
 
+            event.stopPropagation();
             event.preventDefault();
 
             let marker = markers[0];
 
-            let popup = PopupWord.createNode(marker);
+            this.currentPopup = PopupWord.createNode(marker);
+            this.currentPopup.addEventListener('click', () => {
 
-            this.popups.push(popup);
+                this.popupOpen = false;
+                this.currentPopup.remove()
+            });
 
-            this.editor.addWidget(lineCh, popup);
+            this.popupOpen = true;
+
+            this.editor.addWidget(lineCh, this.currentPopup);
         }
     }
 

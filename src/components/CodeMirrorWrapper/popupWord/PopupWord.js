@@ -10,10 +10,6 @@ const PopupWord = {
         div.style.position = 'absolute';
         div.classList.add('popup-word');
 
-        div.addEventListener('click', function () {
-            this.remove();
-        });
-
         return div;
     }
 
