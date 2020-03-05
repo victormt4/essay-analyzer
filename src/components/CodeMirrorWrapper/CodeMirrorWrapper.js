@@ -22,7 +22,7 @@ class CodeMirrorWrapper extends React.Component {
     componentDidMount() {
 
         this.editor = CodeMirror(document.getElementById('code-mirror-node'), {
-            lineWrapping: true,
+            lineWrapping: true
             // lineNumbers: true
         });
 
@@ -96,20 +96,20 @@ class CodeMirrorWrapper extends React.Component {
 
     clickOnWord(instance, event) {
 
-        // let lineCh = this.editor.coordsChar({left: event.clientX, top: event.clientY});
-        // let markers = this.editor.findMarksAt(lineCh);
-        //
-        // if (markers.length) {
-        //
-        //     let marker = markers[0];
-        //
-        //     let div = document.createElement('div');
-        //     div.id = 'container-popup-word';
-        //     div.innerText = marker.word.value;
-        //     div.style.position = 'absolute';
-        //
-        //     this.editor.addWidget(lineCh, div);
-        // }
+        let lineCh = this.editor.coordsChar({left: event.clientX, top: event.clientY});
+        let markers = this.editor.findMarksAt(lineCh);
+
+        if (markers.length) {
+
+            let marker = markers[0];
+
+            let div = document.createElement('div');
+            div.id = 'container-popup-word';
+            div.innerText = marker.word.value;
+            div.style.position = 'absolute';
+
+            this.editor.addWidget(lineCh, div);
+        }
     }
 
     render() {

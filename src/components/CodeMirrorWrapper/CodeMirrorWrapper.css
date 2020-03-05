@@ -7,8 +7,9 @@
     background: unset;
 }
 
-#code-mirror-node, .CodeMirror {
-    height: 100%;
+#code-mirror-node {
+    height: calc(100vh - 14em);
+    position: relative;
 }
 
 .CodeMirror {
@@ -17,9 +18,8 @@
     font-size: 1rem;
     color: rgba(0, 0, 0, .65);
     transition: border-color 150ms;
-    height: calc(100vh - 12em);
+    height: 100%;
 }
-
 
 .CodeMirror-focused, .CodeMirror:hover {
     border-color: #bfbfbf;
