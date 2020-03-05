@@ -102,6 +102,8 @@ class CodeMirrorWrapper extends React.Component {
 
         if (markers.length) {
 
+            event.preventDefault();
+
             let marker = markers[0];
 
             let div = document.createElement('div');
