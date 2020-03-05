@@ -4,6 +4,7 @@ import searchcursor from "./addons/searchcursor";
 import 'codemirror/lib/codemirror.css';
 import "./CodeMirrorWrapper.css";
 import image from '../../empty_image.svg';
+import PopupWord from "./popupWord/PopupWord";
 
 class CodeMirrorWrapper extends React.Component {
 
@@ -14,6 +15,8 @@ class CodeMirrorWrapper extends React.Component {
         this.state = {enableBackground: true};
 
         searchcursor(CodeMirror);
+
+        this.popups = [];
 
         this.processText = this.processText.bind(this);
         this.clickOnWord = this.clickOnWord.bind(this);
@@ -28,15 +31,12 @@ class CodeMirrorWrapper extends React.Component {
         this.editor.focus();
 
         this.editor.on('change', this.processText);
-        this.editor.on('mousedown', this.clickOnWord)
-
+        this.editor.getWrapperElement().addEventListener('click', this.clickOnWord);
     }
 
     processText(instance, changeObj) {
 
         let text = this.editor.getValue();
-
-        console.log(text.length);
 
         if (text.length) this.setState({enableBackground: false});
         else this.setState({enableBackground: true});
@@ -95,7 +95,9 @@ class CodeMirrorWrapper extends React.Component {
         marks.forEach(mark => mark.clear())
     }
 
-    clickOnWord(instance, event) {
+    clickOnWord(event) {
+
+        console.log('click');
 
         let lineCh = this.editor.coordsChar({left: event.clientX, top: event.clientY});
         let markers = this.editor.findMarksAt(lineCh);
@@ -106,12 +108,11 @@ class CodeMirrorWrapper extends React.Component {
 
             let marker = markers[0];
 
-            let div = document.createElement('div');
-            div.id = 'container-popup-word';
-            div.innerText = marker.word.value;
-            div.style.position = 'absolute';
+            let popup = PopupWord.createNode(marker);
 
-            this.editor.addWidget(lineCh, div);
+            this.popups.push(popup);
+
+            this.editor.addWidget(lineCh, popup);
         }
     }
 

@@ -1,0 +1,13 @@
+.popup-word {
+    background: white;
+    color: inherit;
+    z-index: 1000;
+    /*border: 2px solid black;*/
+    border-radius: 3px;
+    padding: 1em;
+    box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+}
+
+.dark-mode .popup-word {
+    background: #313131;
+}
