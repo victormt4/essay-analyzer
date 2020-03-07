@@ -1,5 +1,5 @@
 import React from 'react';
-import {Drawer} from "antd";
+import {Drawer, Alert} from "antd";
 import CodeMirror from "codemirror/src/codemirror"
 import searchcursor from "./addons/searchcursor";
 import 'codemirror/lib/codemirror.css';
@@ -162,6 +162,12 @@ class CodeMirrorWrapper extends React.Component {
                     visible={this.state.drawer}
                     height="50%"
                 >
+                    <Alert
+                        closable={true}
+                        message="Dica: clique em um dos sinônimos para substituir no texto"
+                        type="success"
+                        showIcon={true}
+                    />
                     <SynonymsSelector
                         word={this.state.marker.word.value}
                         hideTitle={true}
