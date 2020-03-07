@@ -2,12 +2,15 @@
 
 body {
     margin: 0;
-    font-family: 'Ubuntu', sans-serif;
     height: 100%;
     width: 100%;
     color: rgba(0, 0, 0, 0.50);
     background: white;
     transition: background-color 200ms, color 200ms;
+}
+
+*:not(i) {
+    font-family: 'Fira Sans', sans-serif;
 }
 
 body.dark-mode {
@@ -52,6 +55,14 @@ body.dark-mode {
 .dark-mode .ant-drawer-header {
     background: #2b2b2b;
     border-color: #313131;
+    color: white;
+}
+
+.dark-mode .ant-alert-success {
+    background: transparent;
+}
+
+.dark-mode .ant-alert-message, .dark-mode .ant-alert-close-icon .anticon {
     color: white;
 }
 

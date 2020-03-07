@@ -166,7 +166,6 @@ class CodeMirrorWrapper extends React.Component {
                         closable={true}
                         message="Dica: clique em um dos sinônimos para substituir no texto"
                         type="success"
-                        showIcon={true}
                     />
                     <SynonymsSelector
                         word={this.state.marker.word.value}
