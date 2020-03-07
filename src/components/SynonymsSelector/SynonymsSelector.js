@@ -41,10 +41,10 @@ export default function SynonymsSelector(props) {
     }, [props.word]);
 
     return (<div className="synonyms-selector">
-        <span className="synonyms-selector-title">{props.word}</span>
+        {!props.hideTitle && <span className="synonyms-selector-title">{props.word}</span>}
         <div className="synonyms-container">
             {state.requestStatus === 200
-                ? state.synonyms.slice(0, 10).map(synonym => <span key={synonym}>{synonym}</span>)
+                ? state.synonyms.slice(0, 10).map(synonym => <span key={synonym} onClick={() => props.replaceWord(synonym)} >{synonym}</span>)
                 : <span>carregando...</span>
             }
         </div>

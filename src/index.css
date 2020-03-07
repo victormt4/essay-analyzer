@@ -10,26 +10,26 @@ body {
     transition: background-color 200ms, color 200ms;
 }
 
-body.dark-mode{
+body.dark-mode {
     color: white;
     background: #2b2b2b
 }
 
-.ant-btn{
+.ant-btn {
     color: inherit;
 }
 
-.dark-mode .ant-btn{
+.dark-mode .ant-btn {
     background: inherit;
     color: inherit;
     transition: unset;
 }
 
-.dark-mode .ant-btn:hover{
+.dark-mode .ant-btn:hover {
     color: #1890ff;
 }
 
-.dark-mode .ant-popover-inner{
+.dark-mode .ant-popover-inner, .dark-mode .ant-drawer-body {
     background: #313131;
     color: white;
 }
@@ -40,9 +40,19 @@ body.dark-mode{
 
 .dark-mode .ant-popover-placement-bottom > .ant-popover-content > .ant-popover-arrow,
 .dark-mode .ant-popover-placement-bottomLeft > .ant-popover-content > .ant-popover-arrow,
-.dark-mode .ant-popover-placement-bottomRight > .ant-popover-content > .ant-popover-arrow{
+.dark-mode .ant-popover-placement-bottomRight > .ant-popover-content > .ant-popover-arrow {
     border-top-color: #313131;
     border-left-color: #313131
+}
+
+.dark-mode .ant-drawer-title, .dark-mode .ant-drawer-close {
+    color: inherit;
+}
+
+.dark-mode .ant-drawer-header {
+    background: #2b2b2b;
+    border-color: #313131;
+    color: white;
 }
 
 *, *::before, *::after {
