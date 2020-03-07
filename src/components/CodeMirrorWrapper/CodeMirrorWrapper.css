@@ -36,6 +36,11 @@
     cursor: pointer;
 }
 
+.text-marker-recent-replaced{
+    background: yellow;
+    color: rgba(0, 0, 0, 0.50);
+}
+
 .dark-mode .text-marker {
     background: #1890ff;
     color: white;

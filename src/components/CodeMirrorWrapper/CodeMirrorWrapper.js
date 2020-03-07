@@ -33,7 +33,6 @@ class CodeMirrorWrapper extends React.Component {
 
         this.editor = CodeMirror(document.getElementById('code-mirror-node'), {
             lineWrapping: true
-            // lineNumbers: true
         });
         this.editor.focus();
 
@@ -45,26 +44,55 @@ class CodeMirrorWrapper extends React.Component {
 
         let text = this.editor.getValue();
 
-        if (text.length) this.setState({enableBackground: false});
-        else this.setState({enableBackground: true});
+        if (this.state.marker && this.state.marker.word.value.toLowerCase() === changeObj.removed[0].toLowerCase()) {
 
-        let wordsCount = [];
+            console.log(changeObj);
 
-        text.split(' ').forEach(word => {
+            this.highlightTextChange(changeObj);
 
-            if (word.length >= 3) {
+        } else if (text.length) {
 
-                let wordCount = wordsCount.find(wordObject => wordObject.value === word.toLowerCase());
+            this.setState({enableBackground: false});
 
-                if (wordCount) wordCount.count = wordCount.count + 1;
-                else wordsCount.push({value: word.toLowerCase(), count: 1});
-            }
+            let wordsCount = [];
+
+            text.split(' ').forEach(word => {
+
+                if (word.length >= 3) {
+
+                    let wordCount = wordsCount.find(wordObject => wordObject.value === word.toLowerCase());
+
+                    if (wordCount) wordCount.count = wordCount.count + 1;
+                    else wordsCount.push({value: word.toLowerCase(), count: 1});
+                }
+            });
+
+            wordsCount = wordsCount.filter(obj => obj.count > 2);
+
+            this.highlightText(wordsCount);
+            this.props.setWords(wordsCount);
+
+        } else this.setState({enableBackground: true});
+    }
+
+    highlightTextChange(changeObj) {
+
+        let {from, to, text, removed} = changeObj;
+        let difference;
+
+        difference = text[0].length - removed[0].length;
+
+        to.ch = to.ch + difference;
+
+        let mark = this.editor.markText(from, to, {
+            className: 'text-marker-recent-replaced'
         });
 
-        wordsCount = wordsCount.filter(obj => obj.count > 2);
+        setTimeout(() => {
 
-        this.highlightText(wordsCount);
-        this.props.setWords(wordsCount);
+            mark.clear();
+
+        }, 1000)
     }
 
     highlightText(wordsCount) {
