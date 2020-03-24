@@ -183,7 +183,7 @@ class CodeMirrorWrapper extends React.Component {
                 </div>
                 {this.state.marker !== null &&
                 <Drawer
-                    title={`Sinônimos de ${this.state.marker.word.value}`}
+                    title={`Sinônimos de "${this.state.marker.word.value}"`}
                     placement="bottom"
                     closable={true}
                     onClose={() => this.setState({drawer: false})}
