@@ -10,7 +10,7 @@ export default function WordCountPopover (props) {
                 if (a.count < b.count) return 1;
                 else if (a.count > b.count) return -1;
                 else return 0;
-            })).map(word => (<div key={word.value} className="word-count-group">
+            })).map(word => (<div key={`${word.value}_${word.count}${word.line ? `_${word.line}` : ''}`} className="word-count-group">
                 <span className="word-count-popover-title">{word.value}</span>
                 <span className="word-count-popover-subtitle">{word.count} repetições</span>
             </div>))}
