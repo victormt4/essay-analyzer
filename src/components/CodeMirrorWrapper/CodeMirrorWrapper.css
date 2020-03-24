@@ -8,7 +8,6 @@
 }
 
 #code-mirror-node {
-    height: calc(100vh - 14em);
     position: relative;
 }
 

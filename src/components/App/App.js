@@ -75,6 +75,22 @@ function App() {
 
     }, []);
 
+    React.useEffect(() => {
+
+        let handler = function (event) {
+
+            let header = document.querySelector('.header');
+
+            if (event.target.scrollTop >= 50)  header.classList.add('box-shadow');
+            else  header.classList.remove('box-shadow');
+        };
+
+        document.body.addEventListener('scroll', handler);
+
+        return () => document.body.removeEventListener('scroll', handler);
+
+    });
+
     return <>
         <header className="header">
             <h1>eSSay</h1>
