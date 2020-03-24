@@ -20,6 +20,10 @@ class CodeMirrorWrapper extends React.Component {
             marker: null
         };
 
+        this.config = {
+            checkMode: 'PARAGRAPH'
+        };
+
         searchcursor(CodeMirror);
 
         this.popupOpen = false;
@@ -32,7 +36,8 @@ class CodeMirrorWrapper extends React.Component {
     componentDidMount() {
 
         this.editor = CodeMirror(document.getElementById('code-mirror-node'), {
-            lineWrapping: true
+            lineWrapping: true,
+            // lineNumbers: true
         });
         this.editor.focus();
 
@@ -44,32 +49,60 @@ class CodeMirrorWrapper extends React.Component {
 
         let text = this.editor.getValue();
 
-        if (this.state.marker && this.state.marker.word.value.toLowerCase() === changeObj.removed[0].toLowerCase()) {
+        if (text.length) {
 
-            console.log(changeObj);
+            let afterHighlightCallback = null;
 
-            this.highlightTextChange(changeObj);
-
-        } else if (text.length) {
+            //Checando se o usuário alterou o texto utilizando a funcionalidade de substituir sinônimos
+            if (this.state.marker && this.state.marker.word.value.toLowerCase() === changeObj.removed[0].toLowerCase())
+                //Salvando a animação da palavra alterada para ser executada depois a fim de evitar conflitos entre os marcadores do CodeMirror
+                afterHighlightCallback = () => this.highlightTextChange(changeObj);
 
             this.setState({enableBackground: false});
 
             let wordsCount = [];
 
-            text.split(' ').forEach(word => {
+            if (this.config.checkMode === 'PARAGRAPH') { //Checando repetições por parágrafo
 
-                if (word.length >= 3) {
+                let lineNumber = 0;
 
-                    let wordCount = wordsCount.find(wordObject => wordObject.value === word.toLowerCase());
+                this.editor.eachLine(line => {
 
-                    if (wordCount) wordCount.count = wordCount.count + 1;
-                    else wordsCount.push({value: word.toLowerCase(), count: 1});
-                }
-            });
+                    if (line.text.length > 0) {
+
+                        line.text.split(' ').forEach(word => {
+
+                            if (word.length >= 3) {
+
+                                let wordCount = wordsCount.find(wordObject => wordObject.value === word.toLowerCase() && wordObject.line === lineNumber);
+
+                                if (wordCount) wordCount.count = wordCount.count + 1;
+                                else wordsCount.push({value: word.toLowerCase(), count: 1, line: lineNumber});
+                            }
+                        });
+
+                    }
+
+                    lineNumber++;
+                });
+
+            } else { //Checando repetições no texto completo
+
+                text.split(' ').forEach(word => {
+
+                    if (word.length >= 3) {
+
+                        let wordCount = wordsCount.find(wordObject => wordObject.value === word.toLowerCase());
+
+                        if (wordCount) wordCount.count = wordCount.count + 1;
+                        else wordsCount.push({value: word.toLowerCase(), count: 1});
+                    }
+                });
+            }
 
             wordsCount = wordsCount.filter(obj => obj.count > 2);
 
-            this.highlightText(wordsCount);
+            this.highlightText(wordsCount, afterHighlightCallback);
             this.props.setWords(wordsCount);
 
         } else this.setState({enableBackground: true});
@@ -95,7 +128,7 @@ class CodeMirrorWrapper extends React.Component {
         }, 1000)
     }
 
-    highlightText(wordsCount) {
+    highlightText(wordsCount, afterHighlightCallback) {
 
         this.clearMarks();
 
@@ -114,19 +147,23 @@ class CodeMirrorWrapper extends React.Component {
                     to: cursor.to()
                 };
 
-                let mark = this.editor.markText(position.from, position.to, {
-                    className: 'text-marker'
-                });
+                //Checando se a linha da palavra encontrada é a mesma do objeto de palavras repetidas
+                if (word.line === undefined || word.line === position.from.line) {
 
-                mark.word = word;
+                    let mark = this.editor.markText(position.from, position.to, {
+                        className: 'text-marker'
+                    });
+
+                    mark.word = word;
+                }
             }
-        })
+        });
+
+        if (typeof afterHighlightCallback === 'function') afterHighlightCallback();
     }
 
     clearMarks() {
-
         let marks = this.editor.getAllMarks();
-
         marks.forEach(mark => mark.clear())
     }
 
