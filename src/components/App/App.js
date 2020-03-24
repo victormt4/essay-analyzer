@@ -55,9 +55,18 @@ function App() {
     function toggleNightMode(enable) {
 
         let body = document.querySelector('body');
+        let metaTag = document.getElementById('meta-tag-theme-color');
 
-        if (enable) body.classList.add('dark-mode');
-        else body.classList.remove('dark-mode')
+        if (enable) {
+
+            body.classList.add('dark-mode');
+            metaTag.setAttribute('content', '#2b2b2b')
+
+        } else {
+
+            body.classList.remove('dark-mode');
+            metaTag.setAttribute('content', '#FFFFFF')
+        }
     }
 
     //Criando evento para detecar resize da janela
@@ -81,8 +90,8 @@ function App() {
 
             let header = document.querySelector('.header');
 
-            if (event.target.scrollTop >= 50)  header.classList.add('box-shadow');
-            else  header.classList.remove('box-shadow');
+            if (event.target.scrollTop >= 50) header.classList.add('box-shadow');
+            else header.classList.remove('box-shadow');
         };
 
         document.body.addEventListener('scroll', handler);
