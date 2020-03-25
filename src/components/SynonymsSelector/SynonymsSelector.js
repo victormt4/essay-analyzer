@@ -12,27 +12,15 @@ export default function SynonymsSelector(props) {
 
         setState(prevState => ({...prevState, requestStatus: 1}));
 
-        let request = fetch(`https://cors-anywhere.herokuapp.com/https://www.sinonimos.com.br/${props.word.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")}`, {
-            method: 'GET',
-            headers: {'x-requested-with': 'xmlhttprequest', 'Content-Type': 'text/plain; charset=ISO-8859-1'}
+        let apiUrl = process.env.REACT_APP_API_URL;
+
+        let request = fetch(`${apiUrl}/synonyms/${props.word.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")}`, {
+            method: 'GET'
         });
 
         request
-            .then(res => res.text())
-            .then(html => {
-
-                let el = document.createElement('div');
-
-                el.innerHTML = html;
-
-                let synonyms = el.querySelectorAll('.s-wrapper .sinonimos a');
-
-                let words = [];
-
-                synonyms.forEach(synonym => {
-
-                    words.push(synonym.innerText);
-                });
+            .then(res => res.json())
+            .then(words => {
 
                 setState(prevState => ({...prevState, synonyms: words, requestStatus: 200}))
 
