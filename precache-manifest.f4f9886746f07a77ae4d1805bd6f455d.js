@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "368df44ad07edea0150ca2cdfe12ee8c",
+    "revision": "3c1723ef474954ec0040914eafb83828",
     "url": "/essay-analyzer/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/essay-analyzer/static/css/2.b49e9118.chunk.css"
   },
   {
-    "revision": "392d86b6fcc60f7a43b6",
+    "revision": "0b5611351abc4e55e39d",
     "url": "/essay-analyzer/static/css/main.b5318865.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/essay-analyzer/static/js/2.78ab8896.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "392d86b6fcc60f7a43b6",
-    "url": "/essay-analyzer/static/js/main.ceb801a8.chunk.js"
+    "revision": "0b5611351abc4e55e39d",
+    "url": "/essay-analyzer/static/js/main.e686c519.chunk.js"
   },
   {
     "revision": "f4ecdbc7832ced7bbc8a",
